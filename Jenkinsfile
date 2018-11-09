@@ -7,7 +7,7 @@ pipeline {
    stages{
    stage('Clone Repository') {
         // Get some code from a GitHub repository
-        git 'https://github.com/ayoub1/spring-petclinic-rest.git'
+        git url: 'https://github.com/ayoub1/spring-petclinic-rest.git'
     
    }
    stage('Build Maven Image') {
