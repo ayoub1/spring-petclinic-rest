@@ -7,9 +7,10 @@ node {
     
    }
    stage('Build Maven Image') {
-        docker.build("maven-build")
+        //docker.build("maven-build")
+      sh 'mvn clean package'
    }
-   
+   /**
    stage('Run Maven Container') {
        
         //Remove maven-build-container if it exisits
@@ -26,5 +27,5 @@ node {
        
         sh "docker run --name java-deploy-container --volumes-from maven-build-container -d -p 8090:8080 ayouboss/petclinic-deploy"
    }
-
+*/
 }
