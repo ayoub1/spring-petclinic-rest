@@ -6,13 +6,14 @@ pipeline {
     }
    stages{
    stage('Clone Repository') {
-        // Get some code from a GitHub repository
+      steps{
         git url: 'https://github.com/ayoub1/spring-petclinic-rest.git'
-    
+      }
    }
    stage('Build Maven Image') {
-        //docker.build("maven-build")
+      steps{
       sh 'mvn clean package'
+      }
    }
    /**
    stage('Run Maven Container') {
