@@ -4,6 +4,7 @@ pipeline {
    tools {
         maven 'maven 3.5.4'
     }
+   stages{
    stage('Clone Repository') {
         // Get some code from a GitHub repository
         git 'https://github.com/ayoub1/spring-petclinic-rest.git'
@@ -31,4 +32,5 @@ pipeline {
         sh "docker run --name java-deploy-container --volumes-from maven-build-container -d -p 8090:8080 ayouboss/petclinic-deploy"
    }
 */
+   }
 }
