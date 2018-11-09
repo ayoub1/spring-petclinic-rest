@@ -1,6 +1,9 @@
 
-node {
-
+pipeline {
+   agent any
+   tools {
+        maven 'maven 3.5.4'
+    }
    stage('Clone Repository') {
         // Get some code from a GitHub repository
         git 'https://github.com/ayoub1/spring-petclinic-rest.git'
