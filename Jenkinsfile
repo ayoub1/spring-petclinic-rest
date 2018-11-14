@@ -4,7 +4,7 @@ pipeline {
     dockerImage = ''
       registry = 'ayouboss/petclinic-deploy'
   }
-   agent any
+    agent { dockerfile true }
    tools {
         maven 'maven 3.5.4'
     }
