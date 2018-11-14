@@ -15,18 +15,40 @@ pipeline {
       sh 'mvn clean package'
       }
    }
-   stage('Build image') {
+
+      
+     stage(' Build Image ')  {
+      steps{
+        script {
+          dockerImage = docker.build("ayouboss/petclinic-deploy")
+        }
+      }
+    }
+    stage(‘Deploy Image’) {
+      steps{
+        script {
+             docker.withRegistry('http://localhost:50000') {
+       dockerImage.push("latest")
+          }
+        }
+      }
+      
+
+ }
+      
+      
+      
+   /**
+   
+   
+      stage('Build image') {
         steps{
     def app =  docker.build("ayouboss/petclinic-deploy")
              docker.withRegistry('http://localhost:50000') {
        app.push("latest")
       }
-    }  
-      
-
- }
-      
-   /**
+    } 
+   
    stage('Run Maven Container') {
        
         //Remove maven-build-container if it exisits
