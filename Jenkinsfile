@@ -27,7 +27,7 @@ pipeline {
         }
       }
     }
-    stage(‘Deploy Image’) {
+    stage(' Deploy Image ') {
       steps{
         script {
              docker.withRegistry('http://localhost:50000') {
