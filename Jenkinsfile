@@ -10,11 +10,26 @@ pipeline {
         git url: 'https://github.com/ayoub1/spring-petclinic-rest.git'
       }
    }
-   stage('Build Maven Image') {
+   stage(' Maven Build') {
       steps{
       sh 'mvn clean package'
       }
    }
+   stage('Build image') {
+    
+        app = docker.build("ayouboss/petclinic-deploy")
+    }  
+      
+   stage('Push image') {
+     /* Finally, we'll push the image with two tags:
+      * First, the incremental build number from Jenkins
+      * Second, the 'latest' tag.
+      * Pushing multiple tags is cheap, as all the layers are reused. */
+     docker.withRegistry('http://localhost:50000') {
+         app.push("latest")
+     }
+ }
+      
    /**
    stage('Run Maven Container') {
        
