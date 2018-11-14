@@ -18,8 +18,6 @@ pipeline {
    stage('Build image') {
         steps{
     def app =  docker.build("ayouboss/petclinic-deploy")
-        }
-      steps{
              docker.withRegistry('http://localhost:50000') {
        app.push("latest")
       }
