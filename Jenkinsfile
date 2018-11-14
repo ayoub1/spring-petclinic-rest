@@ -1,5 +1,8 @@
 
 pipeline {
+   environment {
+    dockerImage = ‘’
+  }
    agent any
    tools {
         maven 'maven 3.5.4'
