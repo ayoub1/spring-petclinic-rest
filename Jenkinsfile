@@ -2,6 +2,7 @@
 pipeline {
    environment {
     dockerImage = ''
+      registry = 'ayouboss/petclinic-deploy'
   }
    agent any
    tools {
@@ -22,8 +23,8 @@ pipeline {
       
      stage(' Build Image ')  {
       steps{
-        script {
-          dockerImage = docker.build("ayouboss/petclinic-deploy")
+      script {
+          dockerImage = docker.build registry 
         }
       }
     }
