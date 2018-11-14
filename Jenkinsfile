@@ -16,8 +16,7 @@ pipeline {
       }
    }
    stage('Build image') {
-    
-        app = docker.build("ayouboss/petclinic-deploy")
+    def app =  docker.build("ayouboss/petclinic-deploy")
     }  
       
    stage('Push image') {
@@ -26,7 +25,7 @@ pipeline {
       * Second, the 'latest' tag.
       * Pushing multiple tags is cheap, as all the layers are reused. */
      docker.withRegistry('http://localhost:50000') {
-         app.push("latest")
+       app.push("latest")
      }
  }
       
