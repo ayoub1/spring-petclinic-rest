@@ -32,7 +32,7 @@ pipeline {
           stage(' Deploy Image ') {
       steps{
         script {
-             docker.withRegistry('http://localhost:50000') {
+             docker.withRegistry('http://localhost:5000') {
        dockerImage.push("latest")
           }
         }
