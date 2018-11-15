@@ -1,5 +1,3 @@
 FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-ARG JAR_FILE
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+COPY /target/spring-petclinic-1.5.1.jar /home/spring-petclinic-1.5.1.jar
+CMD ["java","-jar","/home/spring-petclinic-1.5.1.jar"]
